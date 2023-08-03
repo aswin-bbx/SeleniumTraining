@@ -1,0 +1,55 @@
+﻿@page "/formwithfiveinputs"
+
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+@using BlazorApp1.Client.Model
+
+<h3>Form with Five Inputs</h3>
+
+<EditForm Model="@formData" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <InputText class="form-control" id="name" @bind-Value="@formData.Name" />
+        <ValidationMessage For="@(() => formData.Name)" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <InputText class="form-control" id="email" @bind-Value="@formData.Email" />
+        <ValidationMessage For="@(() => formData.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <InputNumber class="form-control" id="age" @bind-Value="@formData.Age" />
+        <ValidationMessage For="@(() => formData.Age)" />
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <InputText class="form-control" id="address" @bind-Value="@formData.Address" />
+        <ValidationMessage For="@(() => formData.Address)" />
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <InputText class="form-control" id="phone" @bind-Value="@formData.PhoneNumber" />
+        <ValidationMessage For="@(() => formData.PhoneNumber)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <h2>@msg</h2>
+</EditForm>
+
+@code {
+    private EarningModel formData = new EarningModel();
+    private String msg = "";
+    private void HandleSubmit()
+    {
+        msg = "Success";
+    }
+
+    
+}
